@@ -1,74 +1,263 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { StyleSheet, ScrollView, View, Text, Image, StatusBar, SafeAreaView } from 'react-native';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.safeArea}>
+      <StatusBar backgroundColor="#260000" barStyle="light-content" />
+      <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.headerContainer}>
+          <View>
+            <Image
+              source={require('C:/Users/Romark/Podcast/assets/images/pup-logo.png')}
+              style={styles.pupIcon}
+            />
+          </View>
+          <View>
+            <Text style={styles.headerTitle}>Welcome Isko!</Text>
+            <Text style={styles.headerSubTitle}>Find today's best podcasts</Text>
+          </View>
+          <View>
+            <Image
+              source={require('C:/Users/Romark/Podcast/assets/images/cpe-logo.png')}
+              style={styles.cpeIcon}
+            />
+          </View>
+        </View>
+
+        <View style={styles.lessonContainer}>
+          <Image
+            source={require('C:/Users/Romark/Podcast/assets/images/lesson.png')}
+            style={styles.lesson}
+          />
+          <View style={styles.lessonText}>
+            <View>
+              <Text style={styles.lessonTitleText}>Lesson 1: History</Text>
+              <View style={styles.lessonTime}>
+                <FontAwesome6 name="clock-four" size={16} color="rgba(255, 255, 255, 0.5)" />
+                <Text style={styles.lessonIconText}>15 mins of listening</Text>
+              </View>
+            </View>
+            
+            <View style={styles.lessonPlay}>
+              <FontAwesome6 name="play" size={18} color="black" />
+            </View>
+          </View>
+        </View>
+
+
+        <View >
+          <View style={styles.recentlyPlayedContainer}>
+            <Text style={styles.recentlyPlayed}>Recently Played</Text>
+            <Text style={styles.seeAll}>See all</Text>
+          </View>
+          
+          <View style={styles.recentlyContainer}>
+            <View>
+              <Image
+                source={require('C:/Users/Romark/Podcast/assets/images/recently1.png')}
+                style={styles.recently}
+              />
+            </View>
+            
+            <View style={styles.recentlyTitleContainer}>
+              <View>
+                <Text style={styles.recentlyTitle}>The New York Fiction</Text>
+                <Text style={styles.recentlyEpisode}>Episode 4</Text>
+              </View>
+              <View style={styles.recentlyTime}>
+                <FontAwesome6 name="clock-four" size={16} color="rgba(255, 255, 255, 0.5)" />
+                <Text style={styles.recentlyText}>15 mins of listening</Text>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.recentlyContainer}>
+            <View>
+              <Image
+                source={require('C:/Users/Romark/Podcast/assets/images/recently2.png')}
+                style={styles.recently}
+              />
+            </View>
+            
+            <View style={styles.recentlyTitleContainer}>
+              <View>
+                <Text style={styles.recentlyTitle}>60 songs that explain the</Text>
+                <Text style={styles.recentlyEpisode}>Episode 16</Text>
+              </View>
+              <View style={styles.recentlyTime}>
+                <FontAwesome6 name="clock-four" size={16} color="rgba(255, 255, 255, 0.5)" />
+                <Text style={styles.recentlyText}>45 mins of listening</Text>
+              </View>
+            </View>
+          </View>
+
+
+          <View style={styles.divider}></View>
+          
+          <View>
+            <View style={styles.recentlyPlayedContainer}>
+              <Text style={styles.recentlyPlayed}>Popular Podcasts</Text>
+              <Text style={styles.seeAll}>See all</Text>
+            </View>
+          </View>
+
+          <View style={styles.popularContainer}>
+            <Image
+              source={require('C:/Users/Romark/Podcast/assets/images/popular1.png')}
+              style={styles.popular}
+            />
+            <Image
+              source={require('C:/Users/Romark/Podcast/assets/images/popular2.png')}
+              style={styles.popular}
+            />
+          </View>
+
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#260000',
+  },
+  container: {
+    flexGrow: 1,
+    backgroundColor: '#560000',
+    paddingHorizontal: 24,
+    paddingVertical: 30,
+  },
+  headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'space-between',
+    marginTop: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: '900',
+    color: 'white',
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+  headerSubTitle: {
+    fontSize: 10,
+    color: '#585858',
+    fontWeight: '600',
+  },
+  pupIcon: {
+    height: 44,
+    width: 44,
+  },
+  cpeIcon: {
+    height: 50,
+    width: 50,
+  },
+  lessonContainer: {
+    marginTop: 20,
+    borderRadius: 20,
+    overflow: 'hidden', 
+    position: 'relative',
+  },
+  lesson: {
+    width: '100%',
+    height: 190,
+  },
+  lessonText: {
+    backgroundColor: 'rgba(0,0,0,0.25)',
+    padding: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderRadius: 20,
     position: 'absolute',
+    bottom: 6,
+    left: '2%',
+    width: '96%',
+  },
+  lessonTitleText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '900',
+  },
+  lessonTime: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  lessonIconText: {
+    opacity: 0.5,
+    color: 'white',
+    fontSize: 10,
+    marginLeft: 5,
+  },
+  lessonPlay: {
+    backgroundColor: 'white',
+    height: 45,
+    width: 45,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '50%',
+  },
+  recentlyPlayedContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
+  recentlyTitleContainer: {
+    gap: 6,
+  },
+  recentlyTitle: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '900',
+  },
+  recentlyEpisode:{
+    color: 'white',
+    fontSize: 12,
+    fontWeight: '500',
+  },
+  recentlyText: {
+    fontSize: 10,
+    color: 'white',
+    opacity: .5,
+  },
+  recentlyPlayed: {
+    color: 'white'
+  },
+  seeAll: {
+    fontSize: 12,
+    color: '#FF6D45',
+  },
+  recently: {
+    borderRadius: 12,
+    height: 75,
+    width: 75,
+  },
+  recentlyContainer: {
+    height: 75,
+    flexDirection: 'row',
+    gap: 10,
+    marginTop: 20,
+  },
+  recentlyTime: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  divider: {
+    borderBottomColor: '#292929',
+    borderBottomWidth: 1,
+    marginTop: 20,
+  },
+  popularContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
+  popular: {
+    width: 145,
+    height: 145,
+    borderRadius: 20,
   },
 });
